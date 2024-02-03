@@ -11,13 +11,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './view-all-books.component.css'
 })
 export class ViewAllBooksComponent implements OnInit{
-    private http: any;
+    private http: HttpClient;
 
     public bookList: any;
 
     constructor(public httpClient:HttpClient){
         this.http=httpClient;
     }
+
     ngOnInit(): void {
       this.loadBooks();
     }
@@ -28,6 +29,17 @@ export class ViewAllBooksComponent implements OnInit{
            this.bookList=data;
            console.log(this.bookList);
         })
+    }
+
+    selectedBook: any;
+    
+    deleteBook(){
+      let api="http://localhost:8080/book/delete"+this.selectedBook.id;
+      this.http.delete(api,{responseType :`text`}).subscribe((response:String)=>{
+        console.log(response);
+        this.loadBooks();
+        this.selectedBook=null;
+      })
     }
 
     
