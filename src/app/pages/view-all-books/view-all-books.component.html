@@ -1,4 +1,8 @@
-<div class="spinner-border text-primary Loading" role="status" *ngIf="!bookList">
+<div
+  class="spinner-border text-primary Loading"
+  role="status"
+  *ngIf="!bookList"
+>
   <span class="visually-hidden">Loading...</span>
 </div>
 
@@ -18,35 +22,179 @@
     </thead>
     <tbody class="table-group-devider">
       <tr *ngFor="let book of bookList">
-        <td>{{book.id}}</td>
-        <td>{{book.isbn}}</td>
-        <td>{{book.title}}</td>
-        <td>{{book.author}}</td>
-        <td>{{book.category}}</td>
-        <td>{{book.qty}}</td>
-        <td><button (click)="selectedBook=book" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-trash3"></i></button></td>
-        <td><button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></td>
+        <td>{{ book.id }}</td>
+        <td>{{ book.isbn }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.category }}</td>
+        <td>{{ book.qty }}</td>
+        <td>
+          <button
+            (click)="selectedBook = book"
+            class="btn btn-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal"
+          >
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+        <td>
+          <button
+          (click)="selectedBook = book"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#updateModal"
+            data-bs-whatever="@mdo"
+          >
+            <i class="bi bi-pencil-square"></i>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-
 <!--delete Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          You want to delete this item
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button (click)="deleteBook()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
-        </div>
+<div
+  class="modal fade"
+  id="deleteModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">You want to delete this item</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          (click)="deleteBook()"
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+        >
+          Delete
+        </button>
       </div>
     </div>
   </div>
+</div>
+
+<!-- update modal -->
+<div
+  class="modal fade"
+  id="updateModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">You Can Update Now</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Id:</label
+            >
+            <input value={{selectedBook?.id}} type="text" class="form-control" id="recipient-name" disabled />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Isbn:</label
+            >
+            <input value={{selectedBook?.isbn}} type="text" class="form-control" id="recipient-name" disabled/>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Title:</label
+            >
+            <input [(ngModel)]="selectedBook && selectedBook.title" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Author:</label
+            >
+            <input [(ngModel)]="selectedBook && selectedBook.author" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Category:</label
+            >
+            <input [(ngModel)]="selectedBook && selectedBook.category" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Qty:</label
+            >
+            <input [(ngModel)]="selectedBook && selectedBook.qty" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="recipient-name" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal"
+        data-bs-target="#updateConfirmationModal">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Update Confirmation Modal -->
+<div
+  class="modal fade"
+  id="updateConfirmationModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Update</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">Do you want to update This Item ?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+        (click)="saveBook()"
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+        >
+          update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
