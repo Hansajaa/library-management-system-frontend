@@ -36,7 +36,7 @@ export class ViewAllBooksComponent implements OnInit{
     
     deleteBook(){
       let api="http://localhost:8080/book/delete"+this.selectedBook.id;
-      this.http.delete(api,{responseType :`text`}).subscribe((response:String)=>{
+      this.http.delete(api,{responseType : `text`}).subscribe((response:String)=>{
         console.log(response);
         this.loadBooks();
         Swal.fire({
