@@ -3,3 +3,8 @@
     margin-left: 50%;
     margin-bottom: 20%;
 }
+
+.bdr {
+    border-radius: 20px;
+    overflow: hidden;
+}

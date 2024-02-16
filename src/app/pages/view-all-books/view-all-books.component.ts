@@ -55,7 +55,7 @@ export class ViewAllBooksComponent implements OnInit{
         this.loadBooks();
         Swal.fire({
           title: "Updated !",
-          text: `${this.selectedBook.title} is Updated `,
+          text: `Book ${this.selectedBook.title} is Updated `,
           icon: "success"
         });
         this.selectedBook={};

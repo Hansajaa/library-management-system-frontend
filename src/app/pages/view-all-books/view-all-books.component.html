@@ -7,10 +7,10 @@
 </div>
 
 <div class="table-responsive small container mt-5" *ngIf="bookList">
-  <table class="table table-dark table-sm">
-    <thead class="table-primary">
+  <table class="table table-dark table-sm bdr">
+    <thead class="table-secondary">
       <tr>
-        <th scope="col">Id</th>
+        <th scope="col"> </th>
         <th scope="col">Isbn</th>
         <th scope="col">Title</th>
         <th scope="col">Auhtor</th>
@@ -22,7 +22,7 @@
     </thead>
     <tbody class="table-group-devider">
       <tr *ngFor="let book of bookList">
-        <td>{{ book.id }}</td>
+        <td class="table-secondary">{{ book.id }}</td>
         <td>{{ book.isbn }}</td>
         <td>{{ book.title }}</td>
         <td>{{ book.author }}</td>
