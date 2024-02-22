@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { Component } from '@angular/core';
 import { BookRegisterComponent } from './pages/book-register/book-register.component';
+import { BorrowerRegisterComponent } from './pages/borrower-register/borrower-register.component';
 
 export const routes: Routes = [
     {
@@ -26,5 +27,9 @@ export const routes: Routes = [
     {
         path:"registerbooks",
         component:BookRegisterComponent
+    },
+    {
+        path:"registerborrower",
+        component:BorrowerRegisterComponent
     }
 ];
