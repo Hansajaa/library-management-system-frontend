@@ -1,40 +1,87 @@
 <div class="container">
-    <form class="text-center">
-        <img src="../../../assets/images/book-reader.png" width="10%" alt="">
+  <form class="text-center">
+    <img src="../../../assets/images/book-reader.png" width="10%" alt="" />
+    <h2>Borrower Registration Form</h2>
     <div class="input-group mt-5 mb-3">
-        <span class="input-group-text" id="basic-addon1">First Name</span>
-        <input type="text" class="form-control" placeholder="Enter Your first name" aria-label="first name" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Last Name</span>
-        <input type="text" class="form-control" placeholder="Enter Your last name" aria-label="last name" aria-describedby="basic-addon1">
+      <span class="input-group-text" id="basic-addon1">First Name</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Your first name"
+        aria-label="first name"
+        aria-describedby="basic-addon1"
+        [(ngModel)]="borrower.firstName"
+        [ngModelOptions]="{standalone: true}"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Last Name</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Your last name"
+        aria-label="last name"
+        aria-describedby="basic-addon1"
+        [(ngModel)]="borrower.lastName"
+        [ngModelOptions]="{standalone: true}"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Date Of Birth</span>
+      <input
+        type="date"
+        class="form-control"
+        placeholder="Select Your Birthday"
+        aria-label="dob"
+        aria-describedby="basic-addon1"
+        [(ngModel)]="borrower.dob"
+        [ngModelOptions]="{standalone: true}"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Email</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter your Email"
+        aria-label="Email"
+        aria-describedby="basic-addon1"
+        [(ngModel)]="borrower.email"
+        [ngModelOptions]="{standalone: true}"
+      />
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"
+            >Select a Country</span
+          >
+          <select class="form-select" id="country" required>
+            <option value="">Choose...</option>
+            <option *ngFor="let country of countryList" (click)="setSelectedCountry(country)">{{country.flag}} {{country.name.common}}</option>
+          </select>
+        </div>
       </div>
 
-    
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Age</span>
-        <input type="number" class="form-control" placeholder="Enter Your Age" aria-label="Age" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Email</span>
-        <input type="text" class="form-control" placeholder="Enter your Email"  aria-label="Email" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Contact Number</span>
-        <input type="text" class="form-control" placeholder="Enter Your Contact number" aria-label="Contact number" aria-describedby="basic-addon1">
+      <div class="col-sm-6 mb-3">
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">Phone Number</span>
+          <input [ngModel]="selectedCountry?.idd.root" [(ngModel)]="borrower.contactNumber" [ngModelOptions]="{standalone: true}" type="text" class="form-control" />
+        </div>
       </div>
 
-        <button class="btn btn-primary float-end" >Register</button>
-    </form>
+      <button class="btn btn-primary float-end" (click)="saveBorrower()">Register</button>
+    </div>
+  </form>
 </div>
-  
-  
+
 <!-- Modal -->
-  
-  <!-- <div class="modal fade" id="exampleModal" aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1">
+
+<!-- <div class="modal fade" id="exampleModal" aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">

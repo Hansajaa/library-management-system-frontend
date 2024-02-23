@@ -1,40 +1,85 @@
 <div class="container">
-    <form class="text-center">
-        <img src="../../../assets/images/add-book.png" width="10%" alt="">
+  <form class="text-center">
+    <img src="../../../assets/images/add-book.png" width="10%" alt="" />
+    <h2>Book Registration Form</h2>
     <div class="input-group mt-5 mb-3">
-        <span class="input-group-text" id="basic-addon1">ISBN</span>
-        <input type="text" class="form-control" placeholder="Enter ISBN Number of book" [(ngModel)]="book.isbn" [ngModelOptions]="{standalone: true}" aria-label="ISBN" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Title</span>
-        <input type="text" class="form-control" placeholder="Enter Title of the book" [(ngModel)]="book.title" [ngModelOptions]="{standalone: true}" aria-label="Title" aria-describedby="basic-addon1">
-      </div>
+      <span class="input-group-text" id="basic-addon1">ISBN</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter ISBN Number of book"
+        [(ngModel)]="book.isbn"
+        [ngModelOptions]="{ standalone: true }"
+        aria-label="ISBN"
+        aria-describedby="basic-addon1"
+      />
+    </div>
 
-    
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Author</span>
-        <input type="text" class="form-control" placeholder="Enter Author's Name of book" [(ngModel)]="book.author" [ngModelOptions]="{standalone: true}" aria-label="Author" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Category</span>
-        <input type="text" class="form-control" placeholder="Category Of Book" [(ngModel)]="book.category" [ngModelOptions]="{standalone: true}" aria-label="Category" aria-describedby="basic-addon1">
-      </div>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Quantity</span>
-        <input type="number" class="form-control" placeholder="Enter Quantity" [(ngModel)]="book.qty" [ngModelOptions]="{standalone: true}" aria-label="Quantity" aria-describedby="basic-addon1">
-      </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Title</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Title of the book"
+        [(ngModel)]="book.title"
+        [ngModelOptions]="{ standalone: true }"
+        aria-label="Title"
+        aria-describedby="basic-addon1"
+      />
+    </div>
 
-        <button [disabled]="isSaveButtonEnable == false" class="btn btn-primary float-end" (click)="saveBook()">Add Book</button>
-    </form>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Author</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Author's Name of book"
+        [(ngModel)]="book.author"
+        [ngModelOptions]="{ standalone: true }"
+        aria-label="Author"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Category</span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Category Of Book"
+        [(ngModel)]="book.category"
+        [ngModelOptions]="{ standalone: true }"
+        aria-label="Category"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Quantity</span>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Enter Quantity"
+        [(ngModel)]="book.qty"
+        [ngModelOptions]="{ standalone: true }"
+        aria-label="Quantity"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+
+    <button
+      [disabled]="isSaveButtonEnable == false"
+      class="btn btn-primary float-end"
+      (click)="saveBook()"
+    >
+      Add Book
+    </button>
+  </form>
 </div>
-  
-  
+
 <!-- Modal -->
-  
-  <!-- <div class="modal fade" id="exampleModal" aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1">
+
+<!-- <div class="modal fade" id="exampleModal" aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
