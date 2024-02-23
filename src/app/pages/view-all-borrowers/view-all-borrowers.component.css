@@ -1,0 +1,10 @@
+.bdr {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.Loading{
+    margin-top: 20%;
+    margin-left: 50%;
+    margin-bottom: 20%;
+}
