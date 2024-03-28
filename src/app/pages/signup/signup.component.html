@@ -40,6 +40,17 @@
                   </div>
                 </div>
               </div>
+
+              <div class="col-12">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text"></span>
+                  <input type="password" class="form-control" id="password" placeholder="Password" required>
+                <div class="invalid-feedback">
+                    Your password is required.
+                  </div>
+                </div>
+              </div>
   
               <div class="col-12">
                 <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
@@ -75,7 +86,7 @@
   
               <div class="col-md-4">
                 <label for="Phone Number" class="form-label">Phone Number</label>
-                <input [(ngModel)]="selectedCountry?.idd.root" [ngModelOptions]="{standalone:true}" type="text" class="form-control">
+                <input [(ngModel)]="selectedCountryCode" [ngModelOptions]="{standalone:true}" type="text" class="form-control">
               </div>
             </div>
   

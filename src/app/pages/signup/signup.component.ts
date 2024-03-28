@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit{
   private http:HttpClient;
   public countryList:any;
   public selectedCountry:any;
+  public selectedCountryCode:string="";
 
   constructor(private httpClient:HttpClient){
     this.http=httpClient;
@@ -34,6 +35,9 @@ export class SignupComponent implements OnInit{
 
     setSelectedCountry(country:any){
       this.selectedCountry=country;
+      this.selectedCountryCode = country.idd.root+country.idd.suffixes[0];
+      
+      console.log(this.selectedCountryCode);
       console.log(this.selectedCountry);
       
     }
